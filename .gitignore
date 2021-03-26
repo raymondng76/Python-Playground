@@ -3,3 +3,4 @@
 Numpy/out.csv
 Numpy/sbux.csv
 Tensorflow/moore.csv
+__pycache__
