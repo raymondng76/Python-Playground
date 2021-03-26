@@ -11,13 +11,15 @@
 # Input: gain = [-4,-3,-2,-1,4,3,2]
 # Output: 0
 # Explanation: The altitudes are [0,-4,-7,-9,-10,-6,-3,-1]. The highest is 0.
+from typing import List
 
 from rich.console import Console
-from typing import List
+from utils import timer
 
 console = Console()
 
 
+@timer
 def main(gain: List[int]) -> int:
     trip = [0]
     highest = 0
@@ -29,6 +31,7 @@ def main(gain: List[int]) -> int:
     return highest
 
 
+@timer
 def main2(gain: List[int]) -> int:
     alt_meter = [0]
     for g in gain:
