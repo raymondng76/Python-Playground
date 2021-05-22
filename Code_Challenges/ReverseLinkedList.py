@@ -1,8 +1,8 @@
 from collections import deque
-from rich.console import Console
+# from rich.console import Console
 
-console = Console()
-rprint = console.print
+# console = Console()
+# rprint = console.print
 
 
 class ListNode:
@@ -40,4 +40,4 @@ def reverseList2(head):
 
 
 if __name__ == "__main__":
-    console.print(reverseList2(ListNode(val=0, next=ListNode(val=2, next=ListNode(val=3)))).val)
+    print(reverseList2(ListNode(val=0, next=ListNode(val=2, next=ListNode(val=3)))).val)
