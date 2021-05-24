@@ -1,5 +1,6 @@
 import time
 
+
 def firstRecurringChar(lst):
     char_set = set()
     for i in lst:
@@ -23,6 +24,7 @@ start = time.time()
 print(firstRecurringChar(lst4))
 end = time.time()
 print(f"time : {end - start}")
+
 
 def firstRecurringChar2(lst):
     char_dict = {}
