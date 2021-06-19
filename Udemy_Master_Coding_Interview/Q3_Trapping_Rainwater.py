@@ -20,11 +20,11 @@ levels4 = [3, 4, 3]  # 0
 levels5 = [5, 0, 3, 0, 0, 0, 2, 3, 4, 2, 1]  # 20
 
 
-# print(brute_force_trap_rainwater(levels1))
-# print(brute_force_trap_rainwater(levels2))
-# print(brute_force_trap_rainwater(levels3))
-# print(brute_force_trap_rainwater(levels4))
-# print(brute_force_trap_rainwater(levels5))
+print(brute_force_trap_rainwater(levels1))
+print(brute_force_trap_rainwater(levels2))
+print(brute_force_trap_rainwater(levels3))
+print(brute_force_trap_rainwater(levels4))
+print(brute_force_trap_rainwater(levels5))
 
 
 def trap_rainwater(levels: List[int]) -> int:
