@@ -13,8 +13,7 @@ def brute_force_water_area(levels: List[int]) -> int:
     while p1 < len(levels):
         while p2 < len(levels):
             curr_area = min(levels[p1], levels[p2]) * (p2 - p1)
-            if curr_area > max_area:
-                max_area = curr_area
+            max_area = max(curr_area, max_area)
             p2 += 1
         p1 += 1
         p2 = p1 + 1
@@ -35,8 +34,7 @@ def water_area(levels: List[int]) -> int:
     max_area = 0
     while p1 != p2:
         curr_area = min(levels[p1], levels[p2]) * (p2 - p1)
-        if curr_area > max_area:
-            max_area = curr_area
+        max_area = max(curr_area, max_area)
         if levels[p2] > levels[p1]:
             p1 += 1
         else:
@@ -60,8 +58,7 @@ def water_area2(height: List[int]) -> int:
         else:
             front += 1
         curr_area = (back - front) * height[min(back, front)]
-        if curr_area > best_area:
-            best_area = curr_area
+        best_area = max(curr_area, best_area)
 
 
 print(water_area2(levels))
