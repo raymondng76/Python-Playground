@@ -10,15 +10,13 @@ def soln(s: str) -> bool:
         if char in compliment.keys():
             lq.append(char)
         else:
-            try:
+            if lq:
                 last_char = lq.pop()
-            except IndexError:
-                return False
-            if compliment[last_char] == char:
-                continue
             else:
                 return False
-    return True if len(lq) == 0 else False
+            if compliment[last_char] != char:
+                return False
+    return len(lq) == 0
 
 
 input1 = ""  # True
@@ -26,9 +24,11 @@ input2 = "{([])}"  # True
 input3 = "{([]"  # False
 input4 = "{[(])}"  # False
 input5 = "{[]()}"  # True
+input6 = "}[]{"  # False
 
 print(soln(input1))
 print(soln(input2))
 print(soln(input3))
 print(soln(input4))
 print(soln(input5))
+print(soln(input6))
