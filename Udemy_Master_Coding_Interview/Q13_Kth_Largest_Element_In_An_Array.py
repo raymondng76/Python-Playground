@@ -40,3 +40,29 @@ def soln2(nums: List[int], k: int) -> int:
 
 print(soln2(nums1, k1))
 print(soln2(nums2, k2))
+
+
+def soln3(nums: List[int], k: int) -> int:
+    def partition(nums: List[int], left: int, right: int) -> List[int]:
+        pivot = nums[right]
+        partition_idx = left - 1
+        for idx in range(left, right):
+            if nums[idx] <= pivot:
+                partition_idx += 1
+                nums[partition_idx], nums[idx] = nums[idx], nums[partition_idx]
+        nums[partition_idx + 1], nums[right] = nums[right], nums[partition_idx + 1]
+        return partition_idx + 1
+
+    def quick_sort(nums: List[int], left: int, right: int) -> List[int]:
+        if len(nums) == 1:
+            return nums
+        if left < right:
+            partition_idx = partition(nums, left, right)
+            quick_sort(nums, left, partition_idx - 1)
+            quick_sort(nums, partition_idx + 1, right)
+    quick_sort(nums, 0, len(nums) - 1)
+    return nums[-k]
+
+
+print(soln3(nums1, k1))
+print(soln3(nums2, k2))
