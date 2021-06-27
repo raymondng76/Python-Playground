@@ -31,3 +31,24 @@ input3 = "(ab(c)d"  # ab(c)d or (abc)d
 print(soln(input1))
 print(soln(input2))
 print(soln(input3))
+
+
+def soln2(s: str) -> str:
+    chars = [c for c in s]
+    stack = []
+    for c in range(len(chars)):
+        if chars[c] == '(':
+            stack.append(c)
+        elif chars[c] == ')' and stack:
+            stack.pop()
+        elif chars[c] == ')':
+            chars[c] = ""
+    while(stack):
+        idx = stack.pop()
+        chars[idx] = ""
+    return "".join(chars)
+
+
+print(soln2(input1))
+print(soln2(input2))
+print(soln2(input3))
