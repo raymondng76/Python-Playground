@@ -18,7 +18,7 @@ print(soln(nums2, k2))
 
 
 def soln2(nums: List[int], k: int) -> int:
-    def horace_quick_select(nums: List[int]) -> List[int]:
+    def quick_sort(nums: List[int]) -> List[int]:
         if len(nums) <= 1:
             return nums
         starter_idx = len(nums) - 1
@@ -32,10 +32,8 @@ def soln2(nums: List[int], k: int) -> int:
                 swap_idx += 1
                 scan_idx += 1
         nums[swap_idx], nums[starter_idx] = nums[starter_idx], nums[swap_idx]
-        left = horace_quick_select(nums[:swap_idx])
-        right = horace_quick_select(nums[swap_idx+1:])
-        return left + [nums[swap_idx]] + right
-    return horace_quick_select(nums)[-k]
+        return quick_sort(nums[:swap_idx]) + [nums[swap_idx]] + quick_sort(nums[swap_idx+1:])
+    return quick_sort(nums)[-k]
 
 
 print(soln2(nums1, k1))
@@ -66,3 +64,35 @@ def soln3(nums: List[int], k: int) -> int:
 
 print(soln3(nums1, k1))
 print(soln3(nums2, k2))
+
+
+def soln4(nums: List[int], k: int) -> int:
+    def partition(nums: List[int], left: int, right: int) -> List[int]:
+        pivot = nums[right]
+        partition_idx = left - 1
+        for idx in range(left, right):
+            if nums[idx] <= pivot:
+                partition_idx += 1
+                nums[partition_idx], nums[idx] = nums[idx], nums[partition_idx]
+        nums[partition_idx + 1], nums[right] = nums[right], nums[partition_idx + 1]
+        return partition_idx + 1
+
+    def quick_select(nums: List[int], left: int, right: int, idx: int) -> List[int]:
+        if len(nums) == 1:
+            return nums
+        if left < right:
+            partition_idx = partition(nums, left, right)
+            if partition_idx == idx:
+                return nums[partition_idx]
+            elif partition_idx > idx:
+                return quick_select(nums, left, partition_idx - 1, idx)
+            else:
+                return quick_select(nums, partition_idx + 1, right, idx)
+
+    idx_to_find = len(nums) - k
+    quick_select(nums, 0, len(nums) - 1, idx_to_find)
+    return nums[idx_to_find]
+
+
+print(soln4(nums1, k1))
+print(soln4(nums2, k2))
