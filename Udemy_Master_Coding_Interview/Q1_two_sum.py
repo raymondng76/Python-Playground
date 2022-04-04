@@ -47,3 +47,40 @@ def two_sum_simple(input_nums: List[int], target_val: int) -> List[int]:
 
 
 print(two_sum_simple(input_nums, target_val))
+
+
+if __name__ == "__main__":
+    import timeit
+
+    su = "from __main__ import brute_force_two_sum"
+
+    s = """
+input_nums = [1, 3, 7, 9, 2]
+target_val = 11
+brute_force_two_sum(input_nums, target_val)
+    """
+
+    print("brute_force_two_sum")
+    print(timeit.timeit(setup=su, stmt=s, number=100))
+
+    su = "from __main__ import two_sum"
+
+    s = """
+input_nums = [1, 3, 7, 9, 2]
+target_val = 11
+two_sum(input_nums, target_val)
+    """
+
+    print("two_sum")
+    print(timeit.timeit(setup=su, stmt=s, number=100))
+
+    su = "from __main__ import two_sum_simple"
+
+    s = """
+input_nums = [1, 3, 7, 9, 2]
+target_val = 11
+two_sum_simple(input_nums, target_val)
+    """
+
+    print("two_sum_simple")
+    print(timeit.timeit(setup=su, stmt=s, number=100))
