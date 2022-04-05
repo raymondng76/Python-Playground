@@ -1,5 +1,8 @@
 # Return true if both list have common items
+from utils import timer
 
+
+@timer
 def containsCommon(arr1, arr2):
     for a in arr1:
         for b in arr2:
@@ -8,6 +11,7 @@ def containsCommon(arr1, arr2):
     return False
 
 
+@timer
 def containsCommon2(arr1, arr2):
     set_arr1 = set(arr1)
     set_arr2 = set(arr2)
@@ -22,10 +26,9 @@ def containsCommon2(arr1, arr2):
         return False, x
 
 
-
-arr1 = ['a', 'b', 'c', 'x']
+arr1 = ["a", "b", "c", "x"]
 # arr2 = ['z', 'y', 'i']
-arr2 = ['z', 'y', 'x']
+arr2 = ["z", "y", "x"]
 
 print(containsCommon(arr1, arr2))
 print(containsCommon2(arr1, arr2))

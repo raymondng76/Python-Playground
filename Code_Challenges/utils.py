@@ -6,7 +6,7 @@ def timer(func):
         st = time.time()
         results = func(*args, **kwargs)
         tt = time.time() - st
-        print(f"{func.__name__} took {tt} second(s).")
+        print(f"{func.__name__} took {tt:f} second(s).")
         return results
 
     return wrapper
