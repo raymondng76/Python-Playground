@@ -79,6 +79,7 @@ if __name__ == '__main__':
     with concurrent.futures.ProcessPoolExecutor() as exe:
         secs = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
         results = exe.map(action, secs) # Use map method to process action method for each element in secs
+        # results = list(tqdm(exe.map(action, secs)))
 
         for r in results: # Get the output directly
             print(r) # The results return is in the order of their execution
